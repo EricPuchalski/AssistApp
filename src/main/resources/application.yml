@@ -1,0 +1,13 @@
+server:
+  port: 8080  # Puerto en el que se ejecutará la aplicación
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/assist_app?useSSL=false&serverTimezone=UTC
+    username: root
+    password:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update  # Cambiar a 'none' en producción
