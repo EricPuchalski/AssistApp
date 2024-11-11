@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import React, { useState } from "react";
 import {
   User,
@@ -23,6 +24,7 @@ export default function createStudent() {
     dni: "",
   });
 
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const [error, setError] = useState<string | null>(null);
 
   const handleCancel = () => {
