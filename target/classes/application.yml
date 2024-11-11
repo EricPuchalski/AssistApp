@@ -10,4 +10,4 @@ spring:
 
   jpa:
     hibernate:
-      ddl-auto: update  # Cambiar a 'none' en producción
+      ddl-auto: create  # Cambiar a 'none' en producción

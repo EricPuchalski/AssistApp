@@ -25,7 +25,7 @@ interface Subject {
 interface Inscription {
   [x: string]: any;
   id: number;
-  dniEstudiante: string;
+  clientDni: string;
   idMateria: number;
 }
 
@@ -53,7 +53,7 @@ export default function GestionEducativa() {
   const [editingSubject, setEditingSubject] = useState<Subject | null>(null);
   const [newInscription, setNewInscription] = useState<Omit<Inscription, "id">>(
     {
-      dniEstudiante: "",
+      clientDni: "",
       idMateria: 0,
     }
   );
@@ -169,7 +169,7 @@ const handlePrevSubjectPage = () => {
     const fetchInscripciones = async () => {
       try {
         const response = await fetch(
-          "http://localhost:8080/inscriptions/active"
+          "http://localhost:8080/inscriptions"
         );
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
@@ -192,7 +192,7 @@ const handlePrevSubjectPage = () => {
     try {
       // Verificar si el estudiante existe
       const studentResponse = await fetch(
-        `http://localhost:8080/students/dni/${newInscription.dniEstudiante}`
+        `http://localhost:8080/students/dni/${newInscription.clientDni}`
       );
 
       if (!studentResponse.ok) {
@@ -204,7 +204,7 @@ const handlePrevSubjectPage = () => {
       // Si el estudiante no existe, mostrar mensaje de error
       if (!student) {
         setErrorMessage(
-          `No existe el estudiante con el DNI ingresado: ${newInscription.dniEstudiante}`
+          `No existe el estudiante con el DNI ingresado: ${newInscription.clientDni}`
         );
         setIsLoading(false);
         return; // Salir de la función si el estudiante no existe
@@ -225,11 +225,11 @@ const handlePrevSubjectPage = () => {
 
       const result = await response.json();
       setInscriptions([...inscriptions, result]);
-      setNewInscription({ dniEstudiante: "", idMateria: 0 });
+      setNewInscription({ clientDni: "", idMateria: 0 });
     } catch (error) {
       console.error("Error:", error);
       setErrorMessage(
-        `No existe el estudiante con el DNI ingresado: ${newInscription.dniEstudiante}`
+        `No existe el estudiante con el DNI ingresado: ${newInscription.clientDni}`
       );
     } finally {
       setIsLoading(false);
@@ -541,11 +541,11 @@ const handlePrevSubjectPage = () => {
         <input
           type="text"
           id="studentDni"
-          value={newInscription.dniEstudiante}
+          value={newInscription.clientDni}
           onChange={(e) =>
             setNewInscription({
               ...newInscription,
-              dniEstudiante: e.target.value,
+              clientDni: e.target.value,
             })
           }
           className="w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500"
