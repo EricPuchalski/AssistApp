@@ -557,7 +557,7 @@ const handlePrevSubjectPage = () => {
           htmlFor="subjectId"
           className="block text-sm font-medium text-gray-700 mb-1"
         >
-          ID de la Materia
+          Nombre de la Materia
         </label>
         <select
           id="subjectId"
@@ -597,7 +597,7 @@ const handlePrevSubjectPage = () => {
         <thead className="bg-indigo-50">
           <tr>
             <th className="text-left p-3 text-indigo-700">DNI del Estudiante</th>
-            <th className="text-left p-3 text-indigo-700">ID de la Materia</th>
+            <th className="text-left p-3 text-indigo-700">Nombre de la Materia</th>
           </tr>
         </thead>
         <tbody>
